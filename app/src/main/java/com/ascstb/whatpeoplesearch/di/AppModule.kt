@@ -1,7 +1,10 @@
 package com.ascstb.whatpeoplesearch.di
 
 import com.ascstb.whatpeoplesearch.BuildConfig
+import com.ascstb.whatpeoplesearch.core.Navigation
 import com.ascstb.whatpeoplesearch.presentation.AnswerViewModel
+import com.ascstb.whatpeoplesearch.presentation.RootActivity
+import com.ascstb.whatpeoplesearch.presentation.players.PlayerSelectionViewModel
 import com.ascstb.whatpeoplesearch.repository.GoogleApi
 import com.ascstb.whatpeoplesearch.repository.GoogleRepository
 import com.ascstb.whatpeoplesearch.repository.GoogleRepositoryImpl
@@ -17,7 +20,10 @@ val appModule = module {
     single { createOkHttpClient() }
     single<GoogleApi> { createWebService(get(), SERVER_URL) }
     single<GoogleRepository> { GoogleRepositoryImpl(get()) }
+
     viewModel { AnswerViewModel(get()) }
+
+    viewModel { PlayerSelectionViewModel() }
 }
 
 const val SERVER_URL = "https://suggestqueries.google.com/"
