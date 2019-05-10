@@ -16,7 +16,7 @@ class AnswerViewModel(private val repository: GoogleRepository) : ViewModel() {
     var guess: String = ""
         set(value) {
             if (field == value) return
-            field = value.toLowerCase().trim()//.replace(currentQuestion, "").toLowerCase().trim()
+            field = value.replace(currentQuestion, "").toLowerCase().trim()
         }
 
     val answersList: LiveData<List<GoogleAnswer>>

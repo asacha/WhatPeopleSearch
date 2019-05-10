@@ -15,7 +15,7 @@ class GoogleRepositoryImpl(private val googleApi: GoogleApi) : GoogleRepository 
 
     override fun getAnswersAsync(language: String, query: String): LiveData<List<GoogleAnswer>> {
         runBlocking {
-            googleApi.getAnswersAsync("firefox", language, query).await().string().let { response ->
+            googleApi.getAnswersAsync("firefox", language, "${query.trim()} ").await().string().let { response ->
                 if (response.isEmpty()) return@runBlocking
                 answersData.value = convertToAnswersList(response)
             }
@@ -41,8 +41,8 @@ class GoogleRepositoryImpl(private val googleApi: GoogleApi) : GoogleRepository 
 
             //region Format result
             for (i in 0 until answersJson.length()) {
-                val answer = answersJson.get(i).toString().replace(key, "")
-                result.add(GoogleAnswer(answer))
+                val answer = answersJson.get(i).toString().toLowerCase().replace(key.toLowerCase().trim(), "").trim()
+                if (answer.isNotEmpty()) result.add(GoogleAnswer(answer))
             }
             //endregion
         }
