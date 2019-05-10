@@ -1,6 +1,97 @@
 <resources>
-    <string name="app_name">WhatPeopleSearch</string>
+    <string name="app_name">What People Search</string>
     <string name="player_selection_title">Player Selection</string>
     <string name="user_name_hint">User %s</string>
     <string name="confirm_button">Confirm</string>
+    <string name="select_the_category_label">Select the Category</string>
+    <string name="culture_button">Culture</string>
+    <string name="people_button">People</string>
+    <string name="names_button">Names</string>
+    <string name="questions_button">Questions</string>
+    <string name="complete_the_search_label">Complete the search</string>
+    <string name="complete_the_search_hint">Complete the search</string>
+
+    <string-array name="questions">
+        <item>How many people are </item>
+        <item>Who are the country\'s </item>
+        <item>How many languages are </item>
+        <item>What are the most common </item>
+        <item>What is the price for </item>
+        <item>How do people </item>
+        <item>What foods are the </item>
+        <item>What things are </item>
+        <item>At what time is </item>
+        <item>On what occasions would you </item>
+        <item>What internet show is </item>
+        <item>How are the children </item>
+        <item>Is military training </item>
+        <item>Is education </item>
+    </string-array>
+
+    <string-array name="names">
+        <item>Arturo </item>
+        <item>Virginia </item>
+        <item>Alex </item>
+        <item>Carl </item>
+        <item>Oscar </item>
+        <item>Mark </item>
+        <item>Beck </item>
+        <item>Frank </item>
+        <item>Robert </item>
+        <item>Oleg </item>
+        <item>George </item>
+        <item>Donald </item>
+        <item>William </item>
+        <item>Mike </item>
+        <item>Fred </item>
+        <item>Jonathan </item>
+        <item>Johnny </item>
+        <item>Denis </item>
+    </string-array>
+
+    <string-array name="culture">
+        <item>island of </item>
+        <item>should i learn to play the </item>
+        <item>nickelback is </item>
+        <item>baseball is </item>
+        <item>soccer is </item>
+        <item>giraffes are </item>
+        <item>is taylor swift </item>
+        <item>beef is </item>
+        <item>buy stock in </item>
+        <item>monkeys are </item>
+        <item>christmas is </item>
+        <item>why do dogs have </item>
+        <item>life is </item>
+        <item>schools is </item>
+        <item>I am </item>
+        <item>sports are </item>
+        <item>gym is </item>
+        <item>will there be a sequel to </item>
+        <item>Games are </item>
+    </string-array>
+
+    <string-array name="people">
+        <item>how to get rid of </item>
+        <item>tattoos are </item>
+        <item>seafood makes me </item>
+        <item>i was bitten by </item>
+        <item>i had a dream i was </item>
+        <item>i want to be a </item>
+        <item>i lied to my </item>
+        <item>i want to see a </item>
+        <item>is it weird to like </item>
+        <item>my cat likes to eat </item>
+        <item>is libra compatible with </item>
+        <item>my dog has </item>
+        <item>my car is </item>
+        <item>my lucky number is </item>
+        <item>I swallowed a </item>
+        <item>i lied about my </item>
+        <item>my dog ate </item>
+        <item>i wish i were a </item>
+        <item>how to make a </item>
+        <item>my mom is my </item>
+        <item>I am too fat to </item>
+    </string-array>
 </resources>

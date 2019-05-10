@@ -1,9 +1,10 @@
 package com.ascstb.whatpeoplesearch.model
 
-import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
+enum class Category {
+    CULTURE,
+    PEOPLE,
+    NAMES,
+    QUESTIONS,
 
-@Parcelize
-data class Category(
-    var description: String
-) : Parcelable
+    NOT_FOUND
+}

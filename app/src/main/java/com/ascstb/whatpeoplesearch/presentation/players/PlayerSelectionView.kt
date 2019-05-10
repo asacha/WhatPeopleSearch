@@ -10,6 +10,7 @@ import android.widget.EditText
 import androidx.core.view.children
 import androidx.fragment.app.Fragment
 import com.ascstb.whatpeoplesearch.R
+import com.ascstb.whatpeoplesearch.databinding.PlayerSelectionLayoutBinding
 import com.ascstb.whatpeoplesearch.model.Game
 import com.ascstb.whatpeoplesearch.model.User
 import kotlinx.android.synthetic.main.player_selection_layout.view.*
@@ -21,33 +22,31 @@ class PlayerSelectionView : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.player_selection_layout, container, false).also { layout ->
-            //region config Number Picker
-            layout.usersNumber.minValue = 1
-            layout.usersNumber.maxValue = 8
-            layout.usersNumber.setOnValueChangedListener { _, _, newVal ->
-                viewModel.users = newVal
-                updateUsersList(layout)
-            }
-            //endregion
-
-            //region on Confirm
-            layout.btnConfirm.setOnClickListener {
-                val users: MutableList<User> = mutableListOf()
-                layout.playersLayout.children.forEach { child ->
-                    if (child !is EditText) return@forEach
-
-                    users.add(User(name = child.text.toString()))
-                }
-
-                Game.users = users
-                viewModel.onConfirm()
-            }
-            //endregion
-
+    ): View? = PlayerSelectionLayoutBinding.inflate(inflater, container, false).root.also { layout ->
+        //region config Number Picker
+        layout.usersNumber.minValue = 1
+        layout.usersNumber.maxValue = 8
+        layout.usersNumber.setOnValueChangedListener { _, _, newVal ->
+            viewModel.users = newVal
             updateUsersList(layout)
         }
+        //endregion
+
+        //region on Confirm
+        layout.btnConfirm.setOnClickListener {
+            val users: MutableList<User> = mutableListOf()
+            layout.playersLayout.children.forEach { child ->
+                if (child !is EditText) return@forEach
+
+                users.add(User(name = child.text.toString()))
+            }
+
+            Game.users = users
+            viewModel.onConfirm()
+        }
+        //endregion
+
+        updateUsersList(layout)
     }
 
     private fun updateUsersList(layout: View) {

@@ -2,7 +2,7 @@ package com.ascstb.whatpeoplesearch.core
 
 import android.app.Application
 import com.ascstb.whatpeoplesearch.BuildConfig
-import com.ascstb.whatpeoplesearch.di.appModule
+import com.ascstb.whatpeoplesearch.di.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -19,7 +19,14 @@ class MyApp : Application() {
         startKoin {
             androidLogger()
             androidContext(this@MyApp)
-            modules(appModule)
+            modules(
+                appModule +
+                        apiModule +
+                        googleServiceModule +
+                        playerSelectionModule +
+                        categorySelectionModule +
+                        gameModule
+            )
         }
     }
 }
