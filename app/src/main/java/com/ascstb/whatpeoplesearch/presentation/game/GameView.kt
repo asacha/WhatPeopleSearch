@@ -47,10 +47,8 @@ class GameView : Fragment() {
             viewModel.updateAnswer.observe(this, Observer { correctGuess ->
                 setCurrentQuestion()
 
-                //region Player
                 if (!correctGuess) Game.turn++
                 setPlayer()
-                //endregion
 
                 adapter.updateAnswers(Game.answers)
             })

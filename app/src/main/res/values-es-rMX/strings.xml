@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Googleamesta</string>
+    <string name="player_selection_title">Selección de Jugadores</string>
+    <string name="user_name_hint">Jugador(a) %s</string>
+    <string name="confirm_button">Confirmar</string>
+    <string name="select_the_category_label">Selecciona Categoría</string>
+    <string name="culture_button">Cultura</string>
+    <string name="people_button">Personas</string>
+    <string name="names_button">Nombres</string>
+    <string name="questions_button">Preguntas</string>
+    <string name="complete_the_search_label">Completa la búsqueda</string>
+    <string name="complete_the_search_hint">Completa la búsqueda</string>
+
+    <string-array name="questions">
+        <item>Cuanta gente hay </item>
+        <item>Que país es el </item>
+        <item>Cuantos idios hay </item>
+        <item>Cuales son los más comunes </item>
+        <item>Cual es el precio de </item>
+        <item>Como le hago para </item>
+        <item>Que comida es la que </item>
+        <item>Que cosas son </item>
+        <item>A que hora se </item>
+        <item>En que ocasiones necesitas </item>
+        <item>Que show de internet es </item>
+        <item>Como es que los niños </item>
+        <item>Es el entrenamiento militar </item>
+        <item>Es la educación </item>
+    </string-array>
+
+    <string-array name="names">
+        <item>Arturo </item>
+        <item>Virginia </item>
+        <item>Alex </item>
+        <item>Carlos </item>
+        <item>Oscar </item>
+        <item>Marcos </item>
+        <item>Juan </item>
+        <item>Franco </item>
+        <item>Roberto </item>
+        <item>Olga </item>
+        <item>Jorge </item>
+        <item>Rolando </item>
+        <item>William </item>
+        <item>Mike </item>
+        <item>Federico </item>
+        <item>Jesus </item>
+        <item>Johnny </item>
+        <item>Denis </item>
+    </string-array>
+
+    <string-array name="culture">
+        <item>Isla de </item>
+        <item>Deberia aprender a tocar </item>
+        <item>Nickelback es </item>
+        <item>El beisbol es </item>
+        <item>El fútbol es </item>
+        <item>Las jirafas son </item>
+        <item>Taylor swift es </item>
+        <item>La carne es </item>
+        <item>Comprar acciones en </item>
+        <item>Los monos son </item>
+        <item>La navidad es </item>
+        <item>Por que los perros tienen </item>
+        <item>La vida es</item>
+        <item>La escuela es </item>
+        <item>Yo soy </item>
+        <item>Los deportes son </item>
+        <item>El gym es </item>
+        <item>Saldrá una secuela de </item>
+        <item>Los juegos son </item>
+    </string-array>
+
+    <string-array name="people">
+        <item>Como eliminar las </item>
+        <item>Los tatús son </item>
+        <item>Los mariscos me ponen </item>
+        <item>Fuimordido por </item>
+        <item>Soñe que era </item>
+        <item>Yo quiero ser </item>
+        <item>Le mentí a </item>
+        <item>Quiero ver </item>
+        <item>Es raro que me guste </item>
+        <item>A mi gato le gusta comer </item>
+        <item>Es libra compatible con </item>
+        <item>Mi perro tiene </item>
+        <item>Mi auto es </item>
+        <item>Mi numero de la suerte es </item>
+        <item>Me comí </item>
+        <item>Mentí sobre mi </item>
+        <item>Mi perro se comió </item>
+        <item>Desería ser </item>
+        <item>Como hacer un </item>
+        <item>Mi mamá es </item>
+        <item>Estoy muy gordo para </item>
+    </string-array>
+</resources>
