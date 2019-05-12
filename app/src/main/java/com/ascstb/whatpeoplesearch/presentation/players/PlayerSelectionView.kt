@@ -11,8 +11,8 @@ import androidx.core.view.children
 import androidx.fragment.app.Fragment
 import com.ascstb.whatpeoplesearch.R
 import com.ascstb.whatpeoplesearch.databinding.PlayerSelectionLayoutBinding
-import com.ascstb.whatpeoplesearch.model.Game
-import com.ascstb.whatpeoplesearch.model.User
+import com.ascstb.whatpeoplesearch.core.Game
+import com.ascstb.whatpeoplesearch.model.Player
 import kotlinx.android.synthetic.main.player_selection_layout.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -34,14 +34,15 @@ class PlayerSelectionView : Fragment() {
 
         //region on Confirm
         layout.btnConfirm.setOnClickListener {
-            val users: MutableList<User> = mutableListOf()
+            val players: MutableList<Player> = mutableListOf()
             layout.playersLayout.children.forEach { child ->
                 if (child !is EditText) return@forEach
 
-                users.add(User(name = child.text.toString()))
+                val playerName = if(child.text.trim().isEmpty()) child.hint else child.text.trim()
+                players.add(Player(name = playerName.toString()))
             }
 
-            Game.users = users
+            Game.players = players
             viewModel.onConfirm()
         }
         //endregion

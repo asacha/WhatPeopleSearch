@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.ascstb.whatpeoplesearch.core.BaseViewModel
 import com.ascstb.whatpeoplesearch.core.Navigation
 import com.ascstb.whatpeoplesearch.model.Category
-import com.ascstb.whatpeoplesearch.model.Game
+import com.ascstb.whatpeoplesearch.core.Game
 import timber.log.Timber
 
 class CategorySelectionViewModel(

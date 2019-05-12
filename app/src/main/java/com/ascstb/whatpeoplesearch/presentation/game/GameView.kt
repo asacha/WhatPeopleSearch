@@ -13,7 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ascstb.whatpeoplesearch.databinding.GameLayoutBinding
 import com.ascstb.whatpeoplesearch.model.Category
-import com.ascstb.whatpeoplesearch.model.Game
+import com.ascstb.whatpeoplesearch.core.Game
 import kotlinx.android.synthetic.main.game_layout.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
@@ -35,6 +35,8 @@ class GameView : Fragment() {
     ): View? {
         return GameLayoutBinding.inflate(inflater, container, false).root.also { view ->
             this.layout = view
+            setPlayer()
+            generateRandomQuestion()
             setCurrentQuestion()
             fixCurrentQuestion()
             setOnSearchListener()
@@ -42,9 +44,14 @@ class GameView : Fragment() {
 
             getApiInfo()
 
-            viewModel.updateAnswer.observe(this, Observer {
-                layout.search.setText(viewModel.currentQuestion)
-                Selection.setSelection(layout.search.text, viewModel.currentQuestion.length)
+            viewModel.updateAnswer.observe(this, Observer { correctGuess ->
+                setCurrentQuestion()
+
+                //region Player
+                if (!correctGuess) Game.turn++
+                setPlayer()
+                //endregion
+
                 adapter.updateAnswers(Game.answers)
             })
         }
@@ -73,10 +80,18 @@ class GameView : Fragment() {
         layout.rvAnswers.adapter = adapter
     }
 
+    private fun setPlayer() {
+        layout.currentPlayer.text = Game.printCurrentPlayer()
+    }
+
+    //region Questions
     private fun setOnSearchListener() {
         layout.search.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
-                viewModel.guess = layout.search.text.toString()
+                val guess = layout.search.text.toString().trim()
+                if (guess.isEmpty()) return@setOnEditorActionListener false
+
+                viewModel.guess = guess
                 viewModel.tryGuessing()
 
                 context?.let { ctx ->
@@ -109,11 +124,13 @@ class GameView : Fragment() {
     }
 
     private fun setCurrentQuestion() {
-        viewModel.questions = getQuestions().toList()
-        viewModel.currentQuestion = viewModel.questions.random() + " "
-
         layout.search.setText(viewModel.currentQuestion)
         Selection.setSelection(layout.search.text, viewModel.currentQuestion.length)
+    }
+
+    private fun generateRandomQuestion() {
+        viewModel.questions = getQuestions().toList()
+        viewModel.currentQuestion = viewModel.questions.random() + " "
     }
 
     private fun getQuestions() = when (Game.currentCategory) {
@@ -123,4 +140,5 @@ class GameView : Fragment() {
         Category.QUESTIONS -> resources.getStringArray(R.array.questions)
         else -> emptyArray<String>()
     }
+    //endregion
 }

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">What People Search</string>
     <string name="player_selection_title">Player Selection</string>
-    <string name="user_name_hint">User %s</string>
+    <string name="user_name_hint">Player %s</string>
     <string name="confirm_button">Confirm</string>
     <string name="select_the_category_label">Select the Category</string>
     <string name="culture_button">Culture</string>

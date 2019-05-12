@@ -16,10 +16,19 @@
                 style="@style/Title"
                 android:text="@string/complete_the_search_label"/>
 
+        <TextView
+                android:id="@+id/currentPlayer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/CategoryButton"
+                android:gravity="center"
+                tools:text="Current Player"/>
+
         <EditText
                 android:id="@+id/search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:autofillHints=""
                 android:inputType="text"
                 android:hint="@string/complete_the_search_hint"

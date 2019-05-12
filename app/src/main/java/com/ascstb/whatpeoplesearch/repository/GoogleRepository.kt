@@ -42,7 +42,11 @@ class GoogleRepositoryImpl(private val googleApi: GoogleApi) : GoogleRepository 
             //region Format result
             for (i in 0 until answersJson.length()) {
                 val answer = answersJson.get(i).toString().toLowerCase().replace(key.toLowerCase().trim(), "").trim()
-                if (answer.isNotEmpty()) result.add(GoogleAnswer(position = i + 1, answer = answer))
+                if (answer.isNotEmpty()) result.add(GoogleAnswer(
+                    position = i + 1,
+                    answer = answer,
+                    points = 10000 - (1000 * i)
+                ))
             }
             //endregion
         }

@@ -3,7 +3,7 @@ package com.ascstb.whatpeoplesearch.presentation.game
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.ascstb.whatpeoplesearch.model.Game
+import com.ascstb.whatpeoplesearch.core.Game
 import com.ascstb.whatpeoplesearch.model.GoogleAnswer
 import com.ascstb.whatpeoplesearch.repository.GoogleRepository
 import timber.log.Timber
@@ -34,12 +34,15 @@ class AnswerViewModel(private val repository: GoogleRepository) : ViewModel() {
 
     fun tryGuessing() {
         Timber.d("GameView_TAG: tryGuessing: Current Question: $currentQuestion, Guess: $guess")
+        var correctGuess = false
         Game.answers.forEach {
             if (it.answer.toLowerCase().trim() == guess) {
                 it.uncovered = true
+                correctGuess = true
+                Game.currentPlayer.score += it.points
             }
         }
 
-        updateAnswer.postValue(true)
+        updateAnswer.postValue(correctGuess)
     }
 }

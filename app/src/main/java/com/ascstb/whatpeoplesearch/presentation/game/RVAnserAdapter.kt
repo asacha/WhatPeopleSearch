@@ -50,7 +50,7 @@ class RVAnswerAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val answer = answerList[position]
         holder.tvAnswer?.text = answer.answer
-        holder.tvPoints?.text = (10000 - (position * 1000)).toString()
+        holder.tvPoints?.text = answer.points.toString()
         holder.tvHidden?.text = (answer.position).toString()
     }
 
