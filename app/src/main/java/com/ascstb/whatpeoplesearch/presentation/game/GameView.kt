@@ -43,7 +43,8 @@ class GameView : Fragment() {
             getApiInfo()
 
             viewModel.updateAnswer.observe(this, Observer {
-                Timber.d("GameView_TAG: onCreateView: updatedAnswer: $it")
+                layout.search.setText(viewModel.currentQuestion)
+                Selection.setSelection(layout.search.text, viewModel.currentQuestion.length)
                 adapter.updateAnswers(Game.answers)
             })
         }
@@ -56,7 +57,9 @@ class GameView : Fragment() {
         )
 
         viewModel.answersList.observe(this, Observer { answers ->
-            Timber.d("GameView_TAG: onCreateView: answers: $answers")
+            answers.forEach {
+                Timber.d("GameView_TAG: getApiInfo: answer: ${it.answer}")
+            }
             Game.answers = answers
             adapter.updateAnswers(Game.answers)
         })
@@ -107,7 +110,7 @@ class GameView : Fragment() {
 
     private fun setCurrentQuestion() {
         viewModel.questions = getQuestions().toList()
-        viewModel.currentQuestion = viewModel.questions.random()
+        viewModel.currentQuestion = viewModel.questions.random() + " "
 
         layout.search.setText(viewModel.currentQuestion)
         Selection.setSelection(layout.search.text, viewModel.currentQuestion.length)

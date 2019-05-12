@@ -35,7 +35,9 @@ class AnswerViewModel(private val repository: GoogleRepository) : ViewModel() {
     fun tryGuessing() {
         Timber.d("GameView_TAG: tryGuessing: Current Question: $currentQuestion, Guess: $guess")
         Game.answers.forEach {
-            it.uncovered = (it.answer.toLowerCase().trim() == guess)
+            if (it.answer.toLowerCase().trim() == guess) {
+                it.uncovered = true
+            }
         }
 
         updateAnswer.postValue(true)

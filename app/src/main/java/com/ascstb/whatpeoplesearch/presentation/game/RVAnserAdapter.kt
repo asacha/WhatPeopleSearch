@@ -25,10 +25,16 @@ class RVAnswerAdapter(
         }
     }
 
-    override fun getItemViewType(position: Int): Int = if(answerList[position].uncovered) AnswerViewType.SHOWN.typeId else AnswerViewType.HIDDEN.typeId
+    override fun getItemViewType(position: Int): Int {
+        if (answerList[position].uncovered) {
+            return AnswerViewType.SHOWN.typeId
+        } else {
+            return AnswerViewType.HIDDEN.typeId
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val layoutId = when(viewType) {
+        val layoutId = when (viewType) {
             AnswerViewType.SHOWN.typeId -> {
                 type = AnswerViewType.SHOWN
                 R.layout.answer_item_layout
@@ -43,15 +49,9 @@ class RVAnswerAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val answer = answerList[position]
-        when(type) {
-            AnswerViewType.SHOWN -> {
-                holder.tvAnswer?.text = answer.answer
-                holder.tvPoints?.text = (10000 - (position * 1000)).toString()
-            }
-            else -> {
-                holder.tvHidden?.text = (position + 1).toString()
-            }
-        }
+        holder.tvAnswer?.text = answer.answer
+        holder.tvPoints?.text = (10000 - (position * 1000)).toString()
+        holder.tvHidden?.text = (answer.position).toString()
     }
 
     override fun getItemCount(): Int = answerList.size
